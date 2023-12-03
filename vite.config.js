@@ -1,12 +1,15 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [react()],
   build: {
-    rollupOptions: {
-      external: ['@fortawesome/fontawesome-svg-core','react-data-table-component'],
-    },
+    assetsDir: 'assets', // Adjust the assets directory based on your project structure
+    // Uncomment the next block if you still encounter issues after trying the suggestions
+    // rollupOptions: {
+    //   external: ['@fortawesome/fontawesome-svg-core', 'react-data-table-component'],
+    // },
   },
-})
+});
