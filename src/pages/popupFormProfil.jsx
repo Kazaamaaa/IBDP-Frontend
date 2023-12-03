@@ -74,7 +74,7 @@ const PopupFormProfil = ({ isVisible, onClose }) => {
       formData.append("nik", nik)
       formData.append("file", file)
       try {
-          const response = await axiosJWT.patch(`http://localhost:3000/editUsers/${data.userId}`, formData, {
+          const response = await axiosJWT.patch(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/editUsers/${data.userId}`, formData, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`

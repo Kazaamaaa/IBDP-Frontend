@@ -12,7 +12,7 @@ const LayoutAdmin = ({children}) => {
     const { data,  refreshToken } = useTokenRefresh()
     const Logout = async () => {
         try {
-          await axios.delete('http://localhost:3000/logout')      
+          await axios.delete('https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/logout')      
           navigate('/')
         } catch(error) {
           console.log(error)

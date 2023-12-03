@@ -20,7 +20,7 @@ export const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-        const response = await axios.post('http://localhost:3000/login', {
+        const response = await axios.post('https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/login', {
             username: username,
             password: password
         });

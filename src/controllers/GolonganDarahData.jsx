@@ -17,7 +17,7 @@ export const GoldarAllData = () => {
 
     const getGoldar = async () => {
         try {
-          const response = await axios.get("http://localhost:3000/goldar");
+          const response = await axios.get("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/goldar");
           setGoldar(response.data);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -26,7 +26,7 @@ export const GoldarAllData = () => {
   
     const handleDelete = async(goldarid) => {
       try {
-          await axiosJWT.delete(`http://localhost:3000/deletegoldar/${goldarid}`, {
+          await axiosJWT.delete(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/deletegoldar/${goldarid}`, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
@@ -116,7 +116,7 @@ export const GoldarAddData = () => {
       formData.append("type_goldar", type)
       formData.append("jumlah_goldar", jumlah)
       try {
-          const response = await axiosJWT.post("http://localhost:3000/addgoldar", formData, {
+          const response = await axiosJWT.post("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/addgoldar", formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
@@ -149,7 +149,7 @@ export const GoldarEditData = () => {
     };
   
     const getGoldarId = async() => {
-      const response = await axios.get(`http://localhost:3000/goldar/${id}`)
+      const response = await axios.get(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/goldar/${id}`)
       setType(response.data.type_goldar)
       setJumlah(response.data.jumlah_goldar)
     
@@ -161,7 +161,7 @@ export const GoldarEditData = () => {
       formData.append("type_goldar", type)
       formData.append("jumlah_goldar", jumlah)
       try {
-          const response = await axiosJWT.patch(`http://localhost:3000/editgoldar/${id}`, formData, {
+          const response = await axiosJWT.patch(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/editgoldar/${id}`, formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }

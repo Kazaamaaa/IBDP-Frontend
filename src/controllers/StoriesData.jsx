@@ -18,7 +18,7 @@ export const StoriesAllData = () => {
   
     const getStories = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/stories");
+        const response = await axios.get("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/stories");
         setStories(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -27,7 +27,7 @@ export const StoriesAllData = () => {
   
     const handleDelete = async(storiesid) => {
       try {
-          await axios.delete(`http://localhost:3000/deletestories/${storiesid}`, {
+          await axios.delete(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/deletestories/${storiesid}`, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -143,7 +143,7 @@ export const StoriesAddData = () => {
       formData.append("content", content)
       formData.append("dibuat_pada", waktu)
       try {
-          const response = await axios.post("http://localhost:3000/addstories", formData, {
+          const response = await axios.post("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/addstories", formData, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -177,7 +177,7 @@ export const StoriesDetail = () => {
   }, []);
 
   const getStoriesId = async() => {
-    const response = await axios.get(`http://localhost:3000/stories/${id}`)
+    const response = await axios.get(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/stories/${id}`)
 
     setTitle(response.data.judul)
     setContent(response.data.content)
