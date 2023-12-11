@@ -21,15 +21,8 @@ const ProfilPage = () => {
     getUsersWithID();
   }, [])
 
-  console.log('datanya ini', usersData)
-
-
   const handlePasswordChangeClick = () => {
     setChangingPassword(true);
-  };
-
-  const handleSavePasswordClick = () => {
-    console.log('save password')
   };
 
   const handleCancelPasswordChange = () => {
@@ -66,13 +59,11 @@ const ProfilPage = () => {
                     <div className="flex gap-20">
                         <div className="flex flex-col justify-start">
                             <div className="h-62 w-62 rounded-lg flex flex-col justify-center items-center gap-2">
-                                <h3 className="font-bold text-xl " onClick={handleSavePasswordClick}>Akun</h3>
+                                <h3 className="font-bold text-xl " onClick={handleCancelPasswordChange}>Akun</h3>
                                 <img src={line} alt="" width={200} />
                                 <h3 className="font-bold text-xl" onClick={handlePasswordChangeClick}>
                                 Ganti Sandi
                                 </h3>
-                                <img src={line} alt="" width={200} />
-                                <h3 className="font-bold text-xl">Keluar</h3>
                                 <img src={line} alt="" width={200} />
                             </div>
                         </div>

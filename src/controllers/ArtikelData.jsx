@@ -41,7 +41,7 @@ export const ArtikelAddData = () => {
       formData.append("judul", title)
       formData.append("content", content)
       try {
-          const response = await axios.post("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/addartikel", formData, {
+          const response = await axios.post("https://upset-polo-shirt-ray.cyclic.app/addartikel", formData, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -71,7 +71,7 @@ export const ArtikelAllData = () => {
 
   const getArtikel = async () => {
     try {
-      const response = await axios.get("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/artikel");
+      const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/artikel");
       setArtikel(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -80,7 +80,7 @@ export const ArtikelAllData = () => {
 
   const handleDelete = async(artikelId) => {
     try {
-        await axios.delete(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/deleteartikel/${artikelId}`, {
+        await axios.delete(`https://upset-polo-shirt-ray.cyclic.app/deleteartikel/${artikelId}`, {
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Authorization" : `Bearer ${token}`
@@ -166,7 +166,7 @@ export const ArtikelEditData = () => {
   };
 
   const getArtikelId = async() => {
-    const response = await axios.get(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/artikel/${id}`)
+    const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/artikel/${id}`)
     setTitle(response.data.judul)
     setContent(response.data.content)
     setFile(response.data.image)
@@ -181,7 +181,7 @@ export const ArtikelEditData = () => {
     formData.append("judul", title)
     formData.append("content", content)
     try {
-        const response = await axios.patch(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/editartikel/${id}`, formData, {
+        const response = await axios.patch(`https://upset-polo-shirt-ray.cyclic.app/editartikel/${id}`, formData, {
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Authorization" : `Bearer ${token}`
@@ -225,7 +225,7 @@ export const ArtikelDetail = () => {
     refreshToken()
   }, [])
   const getArtikelId = async() => {
-    const response = await axios.get(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/artikel/${id}`)
+    const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/artikel/${id}`)
 
     setTitle(response.data.judul)
     setContent(response.data.content)

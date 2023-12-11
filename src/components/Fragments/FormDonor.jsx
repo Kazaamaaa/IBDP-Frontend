@@ -115,7 +115,7 @@ const FormDonor = () => {
       formData.append("reshus", reshus)
       formData.append("no_hp", no_hp)
       try {
-          const response = await axios.post("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/addpendonor", formData, {
+          const response = await axios.post("https://upset-polo-shirt-ray.cyclic.app/addpendonor", formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }

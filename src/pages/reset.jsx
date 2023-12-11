@@ -13,7 +13,7 @@ const ResetPassword = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch('https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/newPassword', {
+      await axios.patch('https://upset-polo-shirt-ray.cyclic.app/newPassword', {
         email: email,
         password: password
       });

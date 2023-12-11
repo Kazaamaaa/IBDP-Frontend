@@ -1,4 +1,5 @@
 import { Typography } from "@material-tailwind/react";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import useTokenRefresh from "../controllers/useToken";
 
@@ -18,6 +19,7 @@ const PopupFormProfil = ({ isVisible, onClose }) => {
     useEffect(() => {
       refreshToken(); 
     }, []);
+
     const handleNameChange = (e) => {
       setNama(e.target.value);
     };
@@ -60,6 +62,24 @@ const PopupFormProfil = ({ isVisible, onClose }) => {
       const previewURL = URL.createObjectURL(image);
       setImagePreview(previewURL);
     };
+
+    useEffect(() => {
+      getId()
+    }, [])
+
+    const getId = async() => {
+      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/me/${data.userId}`)
+      setNama(response.data.name)
+      setusername(response.data.username)
+      setFile(response.data.image)
+      setImagePreview(response.data.url)
+      setno_telp(response.data.no_telp)
+      setalamat(response.data.alamat)
+      settanggal_lahir(response.data.tanggal_lahir)
+      setjenkel(response.data.jk)
+      setnik(response.data.nik)
+      setemail(response.data.email)
+    }
   
     const handleSubmit = async(e) => {
       e.preventDefault()
@@ -74,7 +94,7 @@ const PopupFormProfil = ({ isVisible, onClose }) => {
       formData.append("nik", nik)
       formData.append("file", file)
       try {
-          const response = await axiosJWT.patch(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/editUsers/${data.userId}`, formData, {
+          const response = await axios.patch(`https://upset-polo-shirt-ray.cyclic.app/editUsers/${data.userId}`, formData, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -82,8 +102,8 @@ const PopupFormProfil = ({ isVisible, onClose }) => {
           })
           console.log("sukses", response)
           window.location.reload()
-      } catch {
-          console.log("error", formData)
+      } catch(error) {
+          console.log("error", error)
       }
     };
 
@@ -117,7 +137,7 @@ const PopupFormProfil = ({ isVisible, onClose }) => {
               <input
                 type="text"
                 id="nama"
-                value={nama }
+                value={nama}
                 onChange={handleNameChange}
                 required
                 className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"

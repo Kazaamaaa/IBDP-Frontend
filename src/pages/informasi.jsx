@@ -34,7 +34,7 @@ const PageInformasi = () => {
 
   const getArtikel = async() => {
       try {
-          const response = await axios.get("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/artikel")
+          const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/artikel")
           setArtikel(response.data)
       } catch (error) {
           console.error("Error fetching data:", error);

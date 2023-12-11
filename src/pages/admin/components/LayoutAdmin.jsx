@@ -8,11 +8,12 @@ import { Button } from '@material-tailwind/react';
 
 const LayoutAdmin = ({children}) => {
     const navigate = useNavigate()
+    const [image, setImagePreview] = useState('')
     const [isDarkMode, setDarkMode] = useState(false);
     const { data,  refreshToken } = useTokenRefresh()
     const Logout = async () => {
         try {
-          await axios.delete('https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/logout')      
+          await axios.delete('https://upset-polo-shirt-ray.cyclic.app/logout')      
           navigate('/')
         } catch(error) {
           console.log(error)
@@ -20,8 +21,15 @@ const LayoutAdmin = ({children}) => {
       }
 
     useEffect(() => {
-        refreshToken()
+        refreshToken();
+        getId();
     }, [])
+
+
+    const getId = async() => {
+        const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/me/${data.userId}`)
+        setImagePreview(response.data.url)
+      }
   
     const toggleDarkMode = () => {
         setDarkMode((prevMode) => !prevMode);
@@ -34,7 +42,7 @@ const LayoutAdmin = ({children}) => {
                 <div className="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 border-none">
                     <img
                     className="w-7 h-7 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden"
-                    src="https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg"
+                    src={image}
                     alt="Avatar"
                     />
                     <span className="hidden md:block">{data.username}</span>

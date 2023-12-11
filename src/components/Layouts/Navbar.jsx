@@ -26,9 +26,9 @@ import {
 import logo from "../../assets/img/logo.png";
 import CustomButton from "../Elements/Button/CostumButton";
 import CustomDialog from "../Fragments/CustomDialog";
-import defaultProfile from "../../assets/img/default.png"
 import useTokenRefresh from "../../controllers/useToken";
 import FunctionLogout from "../../controllers/Logout";
+import axios from "axios";
 
 const navListMenuItems = [
   {
@@ -188,16 +188,23 @@ const NavbarDefault = () => {
   const [openNav, setOpenNav] = useState(false)
   const [openProfile, setOpenProfile] = useState(false)
   const [openProfile2, setOpenProfile2] = useState(false)
+  const [image, setImagePreview] = useState('')
   const { data,  refreshToken } = useTokenRefresh()
   const { Logout } = FunctionLogout()
   const navigate = useNavigate()
 
   useEffect(() => {
-    refreshToken()
+    refreshToken();
+    getId();
   }, [])
 
   const Gotoadmin =() =>{
     navigate('/admin')
+  }
+
+  const getId = async() => {
+    const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/me/${data.userId}`)
+    setImagePreview(response.data.url)
   }
 
 
@@ -235,7 +242,7 @@ const NavbarDefault = () => {
             <div className="flex items-center gap-2">
             <Link to="/profil">
               <Avatar
-                src={defaultProfile}
+                src={image}
                 size="small"
               />
             </Link>
@@ -294,7 +301,7 @@ const NavbarDefault = () => {
             <div className="flex items-center gap-2">
             <Link to="/profil">
               <Avatar
-                src={defaultProfile}
+                src={image}
                 size="small"
               />
             </Link>

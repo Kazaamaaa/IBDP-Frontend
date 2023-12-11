@@ -17,7 +17,7 @@ export const LandingPageData = () => {
 
   const getLanding = async () => {
     try {
-      const response = await axios.get("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/landing");
+      const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/landing");
       setLanding(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -93,7 +93,7 @@ export const LandinPageEditData = () => {
     };
   
     const getLandinglId = async() => {
-      const response = await axios.get(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/landing/${id}`)
+      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/landing/${id}`)
       setTitle(response.data.judul)
       setDeskripsi(response.data.deskripsi)
       setImagePreview(response.data.video_url)
@@ -107,7 +107,7 @@ export const LandinPageEditData = () => {
       formData.append("deskripsi", deskripsi)
       formData.append("video_url", imagePreview)
       try {
-          const response = await axiosJWT.patch(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/editlanding/${id}`, formData, {
+          const response = await axiosJWT.patch(`https://upset-polo-shirt-ray.cyclic.app/editlanding/${id}`, formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }

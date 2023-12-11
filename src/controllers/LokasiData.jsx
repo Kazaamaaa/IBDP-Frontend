@@ -17,7 +17,7 @@ export const LokasiAllData = () => {
 
     const getLokasi = async () => {
         try {
-          const response = await axios.get("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/lokasi");
+          const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/lokasi");
           setLokasi(response.data);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -26,7 +26,7 @@ export const LokasiAllData = () => {
   
     const handleDelete = async(lokasiid) => {
       try {
-          await axiosJWT.delete(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/deletelokasi/${lokasiid}`, {
+          await axiosJWT.delete(`https://upset-polo-shirt-ray.cyclic.app/deletelokasi/${lokasiid}`, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
@@ -160,7 +160,7 @@ export const LokasiAddData = () => {
       formData.append("waktu_buka", waktubuka)
       formData.append("waktu_tutup", waktutup)
       try {
-          const response = await axios.post("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/addlokasi", formData, {
+          const response = await axios.post("https://upset-polo-shirt-ray.cyclic.app/addlokasi", formData, {
               headers:{
                 "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -224,7 +224,7 @@ export const LokasiEditData = () => {
 
   
     const getLokasiId = async() => {
-      const response = await axios.get(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/lokasi/${id}`)
+      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/lokasi/${id}`)
       setNama(response.data.nama_tempat)
       setTempat(response.data.tempat)
       setFile(response.data.image)
@@ -244,7 +244,7 @@ export const LokasiEditData = () => {
       formData.append("waktu_buka", waktubuka)
       formData.append("waktu_tutup", waktutup)
       try {
-          const response = await axios.patch(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/editlokasi/${id}`, formData, {
+          const response = await axios.patch(`https://upset-polo-shirt-ray.cyclic.app/editlokasi/${id}`, formData, {
               headers:{
                 "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`

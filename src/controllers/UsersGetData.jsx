@@ -11,7 +11,7 @@ export const UsersGetData = () => {
   }, [])
   const getUsers = async () => {
     try {
-      const response = await axios.get("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/users", {
+      const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/users", {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -65,7 +65,7 @@ export const UsersGetDataWithID = () => {
   const getUsersWithID = async () => {
     
     try {
-      const response = await axios.get(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/me/${data.userId}`);
+      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/me/${data.userId}`);
       setData(response.data);
       setdatarole(response.data.role)
     } catch (error) {
@@ -95,9 +95,9 @@ export const UsersReset = () => {
     const formData = new FormData()
     formData.append("email", email)
     try {
-      await axios.post(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/reset-password`, formData);
+      await axios.post(`https://upset-polo-shirt-ray.cyclic.app/reset-password`, formData);
 
-      await axios.delete('https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/logout');
+      await axios.delete('https://upset-polo-shirt-ray.cyclic.app/logout');
       window.location.reload()
       
     } catch (error) {

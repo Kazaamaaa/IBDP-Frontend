@@ -17,7 +17,7 @@ export const GoldarAllData = () => {
 
     const getGoldar = async () => {
         try {
-          const response = await axios.get("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/goldar");
+          const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/goldar");
           setGoldar(response.data);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -26,7 +26,7 @@ export const GoldarAllData = () => {
   
     const handleDelete = async(goldarid) => {
       try {
-          await axiosJWT.delete(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/deletegoldar/${goldarid}`, {
+          await axiosJWT.delete(`https://upset-polo-shirt-ray.cyclic.app/deletegoldar/${goldarid}`, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
@@ -38,7 +38,7 @@ export const GoldarAllData = () => {
     }
 
     const GoldarData = () => {
-      return goldar.length;
+      return goldar.reduce((total, item) => total + item.jumlah_goldar, 0);
     };
   
       let counterid = 1;
@@ -55,7 +55,7 @@ export const GoldarAllData = () => {
       });
 
       const latestUpdatedAt = goldar.reduce((latestDate, item) => {
-        const itemDate = new Date(item.diperbarui_pada);
+        const itemDate = new Date(item.updatedAt);
         return itemDate > latestDate ? itemDate : latestDate;
     }, new Date(0));
     
@@ -116,7 +116,7 @@ export const GoldarAddData = () => {
       formData.append("type_goldar", type)
       formData.append("jumlah_goldar", jumlah)
       try {
-          const response = await axiosJWT.post("https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/addgoldar", formData, {
+          const response = await axiosJWT.post("https://upset-polo-shirt-ray.cyclic.app/saveFeed", formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
@@ -128,8 +128,6 @@ export const GoldarAddData = () => {
       }
     };
   
-
-
   return { type, jumlah, handleContentChange, handleTitleChange, handleSubmit };
 };
 
@@ -149,7 +147,7 @@ export const GoldarEditData = () => {
     };
   
     const getGoldarId = async() => {
-      const response = await axios.get(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/goldar/${id}`)
+      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/goldar/${id}`)
       setType(response.data.type_goldar)
       setJumlah(response.data.jumlah_goldar)
     
@@ -161,7 +159,7 @@ export const GoldarEditData = () => {
       formData.append("type_goldar", type)
       formData.append("jumlah_goldar", jumlah)
       try {
-          const response = await axiosJWT.patch(`https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/editgoldar/${id}`, formData, {
+          const response = await axiosJWT.patch(`https://upset-polo-shirt-ray.cyclic.app/editgoldar/${id}`, formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }

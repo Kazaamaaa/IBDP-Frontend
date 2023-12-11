@@ -26,7 +26,7 @@ const FormRegister = () => {
         } else {
       
             try {
-            await axios.post('https://0468-2001-448a-40a7-1aa5-1138-a03b-a329-a0ae.ngrok-free.app/users', {
+            await axios.post('https://upset-polo-shirt-ray.cyclic.app/users', {
                 name: name,
                 email: email,
                 no_telp: no_telp,
