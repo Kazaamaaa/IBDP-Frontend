@@ -11,5 +11,8 @@ export default defineConfig({
     // rollupOptions: {
     //   external: ['@fortawesome/fontawesome-svg-core', 'react-data-table-component'],
     // },
+    rollupOptions: {
+      external: ['styled-components'],
+    },
   },
 });
