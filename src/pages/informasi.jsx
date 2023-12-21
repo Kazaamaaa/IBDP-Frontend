@@ -34,7 +34,7 @@ const PageInformasi = () => {
 
   const getArtikel = async() => {
       try {
-          const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/artikel")
+          const response = await axios.get("http://localhost:3000/artikel")
           setArtikel(response.data)
       } catch (error) {
           console.error("Error fetching data:", error);

@@ -203,7 +203,7 @@ const NavbarDefault = () => {
   }
 
   const getId = async() => {
-    const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/me/${data.userId}`)
+    const response = await axios.get(`http://localhost:3000/me/${data.userId}`)
     setImagePreview(response.data.url)
   }
 

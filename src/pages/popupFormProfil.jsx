@@ -68,7 +68,7 @@ const PopupFormProfil = ({ isVisible, onClose }) => {
     }, [])
 
     const getId = async() => {
-      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/me/${data.userId}`)
+      const response = await axios.get(`http://localhost:3000/me/${data.userId}`)
       setNama(response.data.name)
       setusername(response.data.username)
       setFile(response.data.image)
@@ -94,7 +94,7 @@ const PopupFormProfil = ({ isVisible, onClose }) => {
       formData.append("nik", nik)
       formData.append("file", file)
       try {
-          const response = await axios.patch(`https://upset-polo-shirt-ray.cyclic.app/editUsers/${data.userId}`, formData, {
+          const response = await axios.patch(`http://localhost:3000/editUsers/${data.userId}`, formData, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`

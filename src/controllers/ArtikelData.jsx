@@ -41,7 +41,7 @@ export const ArtikelAddData = () => {
       formData.append("judul", title)
       formData.append("content", content)
       try {
-          const response = await axios.post("https://upset-polo-shirt-ray.cyclic.app/addartikel", formData, {
+          const response = await axios.post("http://localhost:3000/addartikel", formData, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -71,7 +71,7 @@ export const ArtikelAllData = () => {
 
   const getArtikel = async () => {
     try {
-      const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/artikel");
+      const response = await axios.get("http://localhost:3000/artikel");
       setArtikel(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -80,7 +80,7 @@ export const ArtikelAllData = () => {
 
   const handleDelete = async(artikelId) => {
     try {
-        await axios.delete(`https://upset-polo-shirt-ray.cyclic.app/deleteartikel/${artikelId}`, {
+        await axios.delete(`http://localhost:3000/deleteartikel/${artikelId}`, {
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Authorization" : `Bearer ${token}`
@@ -107,9 +107,9 @@ export const ArtikelAllData = () => {
     }));
 
     const columns = [
-    { name: "ID", selector: "id", sortable: true },
-    { name: "Judul", selector: "title", sortable: true },
-    { name: "Content", selector: "content", sortable: true },
+    { name: "ID", selector: "id", sortable: true, width: "120px" },
+    { name: "Judul", selector: "title", sortable: true, width: "200px" },
+    { name: "Content", selector: "content", sortable: true, width: "200px" },
     {
         name: "Image",
         selector: "image",
@@ -166,7 +166,7 @@ export const ArtikelEditData = () => {
   };
 
   const getArtikelId = async() => {
-    const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/artikel/${id}`)
+    const response = await axios.get(`http://localhost:3000/artikel/${id}`)
     setTitle(response.data.judul)
     setContent(response.data.content)
     setFile(response.data.image)
@@ -181,7 +181,7 @@ export const ArtikelEditData = () => {
     formData.append("judul", title)
     formData.append("content", content)
     try {
-        const response = await axios.patch(`https://upset-polo-shirt-ray.cyclic.app/editartikel/${id}`, formData, {
+        const response = await axios.patch(`http://localhost:3000/editartikel/${id}`, formData, {
             headers:{
                 "Content-Type": "multipart/form-data",
                 "Authorization" : `Bearer ${token}`
@@ -225,7 +225,7 @@ export const ArtikelDetail = () => {
     refreshToken()
   }, [])
   const getArtikelId = async() => {
-    const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/artikel/${id}`)
+    const response = await axios.get(`http://localhost:3000/artikel/${id}`)
 
     setTitle(response.data.judul)
     setContent(response.data.content)

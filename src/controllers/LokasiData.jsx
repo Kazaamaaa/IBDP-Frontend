@@ -17,7 +17,7 @@ export const LokasiAllData = () => {
 
     const getLokasi = async () => {
         try {
-          const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/lokasi");
+          const response = await axios.get("http://localhost:3000/lokasi");
           setLokasi(response.data);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -26,7 +26,7 @@ export const LokasiAllData = () => {
   
     const handleDelete = async(lokasiid) => {
       try {
-          await axiosJWT.delete(`https://upset-polo-shirt-ray.cyclic.app/deletelokasi/${lokasiid}`, {
+          await axiosJWT.delete(`http://localhost:3000/deletelokasi/${lokasiid}`, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
@@ -75,7 +75,7 @@ export const LokasiAllData = () => {
       
   
       const columns = [
-      { name: "ID", selector: "id", sortable: true },
+      { name: "ID", selector: "id", sortable: true, width: "100px" },
       { name: "Nama Tempat", selector: "nama", sortable: true },
       { name: "Tempat", selector: "tempat", sortable: true },
       { name: "Waktu Buka", selector: "tanggalwaktubuka", sortable: true },
@@ -160,7 +160,7 @@ export const LokasiAddData = () => {
       formData.append("waktu_buka", waktubuka)
       formData.append("waktu_tutup", waktutup)
       try {
-          const response = await axios.post("https://upset-polo-shirt-ray.cyclic.app/addlokasi", formData, {
+          const response = await axios.post("http://localhost:3000/addlokasi", formData, {
               headers:{
                 "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -224,7 +224,7 @@ export const LokasiEditData = () => {
 
   
     const getLokasiId = async() => {
-      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/lokasi/${id}`)
+      const response = await axios.get(`http://localhost:3000/lokasi/${id}`)
       setNama(response.data.nama_tempat)
       setTempat(response.data.tempat)
       setFile(response.data.image)
@@ -244,7 +244,7 @@ export const LokasiEditData = () => {
       formData.append("waktu_buka", waktubuka)
       formData.append("waktu_tutup", waktutup)
       try {
-          const response = await axios.patch(`https://upset-polo-shirt-ray.cyclic.app/editlokasi/${id}`, formData, {
+          const response = await axios.patch(`http://localhost:3000/editlokasi/${id}`, formData, {
               headers:{
                 "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`

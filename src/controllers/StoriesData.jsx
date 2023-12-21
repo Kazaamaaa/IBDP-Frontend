@@ -18,7 +18,7 @@ export const StoriesAllData = () => {
   
     const getStories = async () => {
       try {
-        const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/stories");
+        const response = await axios.get("http://localhost:3000/stories");
         setStories(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -27,7 +27,7 @@ export const StoriesAllData = () => {
   
     const handleDelete = async(storiesid) => {
       try {
-          await axios.delete(`https://upset-polo-shirt-ray.cyclic.app/deletestories/${storiesid}`, {
+          await axios.delete(`http://localhost:3000/deletestories/${storiesid}`, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -74,7 +74,7 @@ export const StoriesAllData = () => {
   
   
       const columns = [
-      { name: "ID", selector: "id", sortable: true, minWidth: "20%" },
+      { name: "ID", selector: "id", sortable: true,  width: "120px" },
       { name: "Judul", selector: "title", sortable: true },
       {
           name: "Image",
@@ -143,7 +143,7 @@ export const StoriesAddData = () => {
       formData.append("content", content)
       formData.append("dibuat_pada", waktu)
       try {
-          const response = await axios.post("https://upset-polo-shirt-ray.cyclic.app/addstories", formData, {
+          const response = await axios.post("http://localhost:3000/addstories", formData, {
               headers:{
                   "Content-Type": "multipart/form-data",
                   "Authorization" : `Bearer ${token}`
@@ -177,7 +177,7 @@ export const StoriesDetail = () => {
   }, []);
 
   const getStoriesId = async() => {
-    const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/stories/${id}`)
+    const response = await axios.get(`http://localhost:3000/stories/${id}`)
 
     setTitle(response.data.judul)
     setContent(response.data.content)

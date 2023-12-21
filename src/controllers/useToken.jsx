@@ -13,7 +13,7 @@ const useTokenRefresh = () => {
 
   const refreshToken = async () => {
     try {
-      const response = await axios.get('https://upset-polo-shirt-ray.cyclic.app/token');
+      const response = await axios.get('http://localhost:3000/token');
       setToken(response.data.accessToken);
       const decoded = jwtDecode(response.data.accessToken);
       setName(decoded.username);
@@ -30,7 +30,7 @@ const useTokenRefresh = () => {
   axiosJWT.interceptors.request.use(async (config) => {
     const currentDate = new Date();
     if (expire * 1000 < currentDate.getTime()) {
-      const response = await axiosJWT.get('https://upset-polo-shirt-ray.cyclic.app/token');
+      const response = await axiosJWT.get('http://localhost:3000/token');
       config.headers.Authorization = `Bearer ${response.data.accessToken}`;
       setToken(response.data.accessToken);
       const decoded = jwtDecode(response.data.accessToken);

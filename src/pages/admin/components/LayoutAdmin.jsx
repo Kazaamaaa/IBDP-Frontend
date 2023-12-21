@@ -13,7 +13,7 @@ const LayoutAdmin = ({children}) => {
     const { data,  refreshToken } = useTokenRefresh()
     const Logout = async () => {
         try {
-          await axios.delete('https://upset-polo-shirt-ray.cyclic.app/logout')      
+          await axios.delete('http://localhost:3000/logout')      
           navigate('/')
         } catch(error) {
           console.log(error)
@@ -27,7 +27,7 @@ const LayoutAdmin = ({children}) => {
 
 
     const getId = async() => {
-        const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/me/${data.userId}`)
+        const response = await axios.get(`http://localhost:3000/me/${data.userId}`)
         setImagePreview(response.data.url)
       }
   

@@ -17,7 +17,7 @@ export const GoldarAllData = () => {
 
     const getGoldar = async () => {
         try {
-          const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/goldar");
+          const response = await axios.get("http://localhost:3000/goldar");
           setGoldar(response.data);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -26,7 +26,7 @@ export const GoldarAllData = () => {
   
     const handleDelete = async(goldarid) => {
       try {
-          await axiosJWT.delete(`https://upset-polo-shirt-ray.cyclic.app/deletegoldar/${goldarid}`, {
+          await axiosJWT.delete(`http://localhost:3000/deletegoldar/${goldarid}`, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
@@ -43,16 +43,19 @@ export const GoldarAllData = () => {
   
       let counterid = 1;
       const datatabel = goldar.map((item) => {
+        const updatedAtDate = new Date(item.diperbarui_pada);
+        const formattedUpdatedAt = updatedAtDate.toLocaleDateString('en-GB'); // Adjust the locale as needed
       
         return {
           id: counterid++,
           type_goldar: item.type_goldar,
           jumlah_goldar: item.jumlah_goldar,
-          updatedat: item.diperbarui_pada,
+          updatedat: formattedUpdatedAt,
           action: "",
           item_id: item.id,
         };
       });
+      
 
       const latestUpdatedAt = goldar.reduce((latestDate, item) => {
         const itemDate = new Date(item.updatedAt);
@@ -61,8 +64,8 @@ export const GoldarAllData = () => {
     
   
       const columns = [
-      { name: "ID", selector: "id", sortable: true },
-      { name: "Type Golongan", selector: "type", sortable: true },
+      { name: "ID", selector: "id", sortable: true, width: "120px" },
+      { name: "Type Golongan", selector: "type_goldar", sortable: true },
       { name: "Jumlah", selector: "jumlah_goldar", sortable: true },
       { name: "Update At", selector: "updatedat", sortable: true },
       {
@@ -116,7 +119,7 @@ export const GoldarAddData = () => {
       formData.append("type_goldar", type)
       formData.append("jumlah_goldar", jumlah)
       try {
-          const response = await axiosJWT.post("https://upset-polo-shirt-ray.cyclic.app/saveFeed", formData, {
+          const response = await axiosJWT.post("http://localhost:3000/saveFeed", formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
@@ -147,7 +150,7 @@ export const GoldarEditData = () => {
     };
   
     const getGoldarId = async() => {
-      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/goldar/${id}`)
+      const response = await axios.get(`http://localhost:3000/goldar/${id}`)
       setType(response.data.type_goldar)
       setJumlah(response.data.jumlah_goldar)
     
@@ -159,7 +162,7 @@ export const GoldarEditData = () => {
       formData.append("type_goldar", type)
       formData.append("jumlah_goldar", jumlah)
       try {
-          const response = await axiosJWT.patch(`https://upset-polo-shirt-ray.cyclic.app/editgoldar/${id}`, formData, {
+          const response = await axiosJWT.patch(`http://localhost:3000/editgoldar/${id}`, formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }

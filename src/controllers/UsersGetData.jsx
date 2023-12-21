@@ -11,7 +11,7 @@ export const UsersGetData = () => {
   }, [])
   const getUsers = async () => {
     try {
-      const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/users", {
+      const response = await axios.get("http://localhost:3000/users", {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -35,12 +35,12 @@ export const UsersGetData = () => {
     }));
 
     const columns = [
-    { name: "ID", selector: "id", sortable: true },
-    { name: "Nama Lengkap", selector: "name", sortable: true },
-    { name: "Username", selector: "username", sortable: true },
-    { name: "NO Telepon", selector: "noTelp", sortable: true },
-    { name: "Jenis Kelamin", selector: "jk", sortable: true },
-    { name: "Alamat", selector: "alamat", sortable: true },
+    { name: "ID", selector: "id", sortable: true, width: "120px" },
+    { name: "Nama Lengkap", selector: "name", sortable: true, width: "150px" },
+    { name: "Username", selector: "username", sortable: true, width: "120px" },
+    { name: "NO Telepon", selector: "noTelp", sortable: true, width: "120px" },
+    { name: "Jenis Kelamin", selector: "jk", sortable: true, width: "150px" },
+    { name: "Alamat", selector: "alamat", sortable: true, width: "150px" },
     {
         name: "Image",
         selector: "image",
@@ -65,7 +65,7 @@ export const UsersGetDataWithID = () => {
   const getUsersWithID = async () => {
     
     try {
-      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/me/${data.userId}`);
+      const response = await axios.get(`http://localhost:3000/me/${data.userId}`);
       setData(response.data);
       setdatarole(response.data.role)
     } catch (error) {
@@ -95,9 +95,9 @@ export const UsersReset = () => {
     const formData = new FormData()
     formData.append("email", email)
     try {
-      await axios.post(`https://upset-polo-shirt-ray.cyclic.app/reset-password`, formData);
+      await axios.post(`http://localhost:3000/reset-password`, formData);
 
-      await axios.delete('https://upset-polo-shirt-ray.cyclic.app/logout');
+      await axios.delete('http://localhost:3000/logout');
       window.location.reload()
       
     } catch (error) {

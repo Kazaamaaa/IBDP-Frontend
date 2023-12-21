@@ -17,7 +17,7 @@ export const PendonorAllData = () => {
   
     const getPendonor = async () => {
       try {
-        const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/pendonor");
+        const response = await axios.get("http://localhost:3000/pendonor");
         setPendonor(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -26,7 +26,7 @@ export const PendonorAllData = () => {
 
     const handleDelete = async(pendonorid) => {
       try {
-          await axiosJWT.delete(`https://upset-polo-shirt-ray.cyclic.app/deletependonor/${pendonorid}`, {
+          await axiosJWT.delete(`http://localhost:3000/deletependonor/${pendonorid}`, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }

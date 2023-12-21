@@ -4,7 +4,7 @@ const FunctionLogout = () => {
   
     const Logout = async () => {
         try {
-          await axios.delete('https://upset-polo-shirt-ray.cyclic.app/logout')      
+          await axios.delete('http://localhost:3000/logout')      
           window.location.reload();
         } catch(error) {
           console.log(error)

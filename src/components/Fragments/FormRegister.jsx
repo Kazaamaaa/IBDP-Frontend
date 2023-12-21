@@ -26,7 +26,7 @@ const FormRegister = () => {
         } else {
       
             try {
-            await axios.post('https://upset-polo-shirt-ray.cyclic.app/users', {
+            await axios.post('http://localhost:3000/users', {
                 name: name,
                 email: email,
                 no_telp: no_telp,

@@ -17,7 +17,7 @@ export const LandingPageData = () => {
 
   const getLanding = async () => {
     try {
-      const response = await axios.get("https://upset-polo-shirt-ray.cyclic.app/landing");
+      const response = await axios.get("http://localhost:3000/landing");
       setLanding(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -33,27 +33,31 @@ export const LandingPageData = () => {
     action: "",
   }));
 
+  // Inside LandingPageData component
   const columns = [
-    { name: "ID", selector: "id", sortable: true },
-    { name: "Judul", selector: "judul", sortable: true },
-    { name: "Deskripsi", selector: "deskripsi", sortable: true },
+    { name: "ID", selector: "id", sortable: true, width: "100px" },
+    { name: "Judul", selector: "judul", sortable: true, width: "100px", },
+    { name: "Deskripsi", selector: "deskripsi", sortable: true, width: "200px",  },
     {
       name: "Video",
       selector: "videoUrl",
       sortable: true,
       cell: (row) => (
-        <video width="320" height="240" controls>
-          <source src={row.videoUrl} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div >
+          <video className="items-center" width="320" height="240" controls>
+            <source src={row.videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       ),
     },
     {
       name: "Action",
       selector: "action",
       sortable: true,
+      width: "100px",
       cell: (row) => (
-        <div>
+        <div style={{ textAlign: 'center' }}>
           <a href={`landingpageadmin/${row.id}`}>
             <FontAwesomeIcon
               icon={faEdit}
@@ -64,6 +68,7 @@ export const LandingPageData = () => {
       ),
     },
   ];
+
 
   return { getLanding, landing, columns, datatabel };
 };
@@ -93,7 +98,7 @@ export const LandinPageEditData = () => {
     };
   
     const getLandinglId = async() => {
-      const response = await axios.get(`https://upset-polo-shirt-ray.cyclic.app/landing/${id}`)
+      const response = await axios.get(`http://localhost:3000/landing/${id}`)
       setTitle(response.data.judul)
       setDeskripsi(response.data.deskripsi)
       setImagePreview(response.data.video_url)
@@ -107,7 +112,7 @@ export const LandinPageEditData = () => {
       formData.append("deskripsi", deskripsi)
       formData.append("video_url", imagePreview)
       try {
-          const response = await axiosJWT.patch(`https://upset-polo-shirt-ray.cyclic.app/editlanding/${id}`, formData, {
+          const response = await axiosJWT.patch(`http://localhost:3000/editlanding/${id}`, formData, {
               headers:{
                   "Authorization" : `Bearer ${token}`
               }
